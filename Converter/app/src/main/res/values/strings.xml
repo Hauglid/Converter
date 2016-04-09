@@ -5,4 +5,17 @@
     <string name="action_reset">Reset</string>
     <string name="layout1_name">Layout One</string>
     <string name="layout2_name">Layout Two</string>
+    <string name="btn_dec">Decimal</string>
+    <string name="btn_bin">Binary</string>
+    <string name="btn_hex">Hexadecimal</string>
+    <string name="btn_oct">Octal</string>
+    <string name="text_to_convert">Enter number here</string>
+    <string name="button_convert">Convert</string>
+    <string name="button_reset">Reset</string>
+    <string name="dec">Decimal</string>
+    <string name="binary">Binary</string>
+    <string name="hex">Hexadecimal</string>
+    <string name="oct">Octal</string>
+    <string name="choose_layout">Choose layout</string>
+
 </resources>
