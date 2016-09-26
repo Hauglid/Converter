@@ -18,13 +18,14 @@ import android.widget.Toast;
 public class Homescreen extends AppCompatActivity {
     private Button btnConvert, btnDec, btnBin, btnOct, btnHex;
     private EditText editText;
-    private TextView textViewDec,textViewHex, textViewBin, textViewOct;
+    private TextView textViewDec, textViewHex, textViewBin, textViewOct;
 
     private ClipboardManager clipboard;
 
     private int base = 10;
     private final float solid = 1.0f;
     private final float transparent = 0.5f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class Homescreen extends AppCompatActivity {
         initComponents();
         addOnListeners();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,7 +65,7 @@ public class Homescreen extends AppCompatActivity {
         }
     }
 
-    private void initComponents(){
+    private void initComponents() {
         btnConvert = (Button) findViewById(R.id.button_convert);
         btnDec = (Button) findViewById(R.id.button_dec);
         btnBin = (Button) findViewById(R.id.button_bin);
@@ -81,7 +83,7 @@ public class Homescreen extends AppCompatActivity {
 
     }
 
-    private void addOnListeners(){
+    private void addOnListeners() {
 
         textViewDec.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +140,8 @@ public class Homescreen extends AppCompatActivity {
                 btnBin.setAlpha(solid);
                 btnOct.setAlpha(transparent);
                 btnHex.setAlpha(transparent);
-                btnDec.setAlpha(transparent);            }
+                btnDec.setAlpha(transparent);
+            }
         });
 
         btnOct.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +153,8 @@ public class Homescreen extends AppCompatActivity {
                 btnBin.setAlpha(transparent);
                 btnOct.setAlpha(solid);
                 btnHex.setAlpha(transparent);
-                btnDec.setAlpha(transparent);}
+                btnDec.setAlpha(transparent);
+            }
         });
 
         btnHex.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +166,8 @@ public class Homescreen extends AppCompatActivity {
                 btnBin.setAlpha(transparent);
                 btnOct.setAlpha(transparent);
                 btnHex.setAlpha(solid);
-                btnDec.setAlpha(transparent);}
+                btnDec.setAlpha(transparent);
+            }
         });
 
         btnConvert.setOnClickListener(new View.OnClickListener() {
@@ -176,7 +181,7 @@ public class Homescreen extends AppCompatActivity {
                 }
 
                 String toConvert = String.valueOf(editText.getText().toString()).toUpperCase().trim();
-                if( Converter.isValid(toConvert, base) ){
+                if (Converter.isValid(toConvert, base)) {
                     switch (base) {
                         case 8:
                             doOctal(toConvert);
@@ -191,7 +196,7 @@ public class Homescreen extends AppCompatActivity {
                             doBin(toConvert);
                             break;
                     }
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Invalid number", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -199,15 +204,15 @@ public class Homescreen extends AppCompatActivity {
     }
 
 
-    private void addToClipboard(String text){
-        if(text.length() > 0){
+    private void addToClipboard(String text) {
+        if (text.length() > 0) {
             ClipData myClip = ClipData.newPlainText("text", text);
             clipboard.setPrimaryClip(myClip);
             Toast.makeText(getApplicationContext(), "Text Copied", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void doOctal(String oct){
+    private void doOctal(String oct) {
         String dec = Converter.toDecimal(oct, 8);
         String bin = Converter.decimalToBinary(dec);
         String hex = Converter.decimalToHexadecimal(dec);
@@ -217,7 +222,7 @@ public class Homescreen extends AppCompatActivity {
         textViewHex.setText(hex);
     }
 
-    private void doHex(String hex){
+    private void doHex(String hex) {
         String dec = Converter.toDecimal(hex, 16);
         String bin = Converter.decimalToBinary(dec);
         String oct = Converter.decimalToOctal(dec);
@@ -227,7 +232,7 @@ public class Homescreen extends AppCompatActivity {
         textViewHex.setText(hex);
     }
 
-    private void doDec(String dec){
+    private void doDec(String dec) {
         String hex = Converter.decimalToHexadecimal(dec);
         String bin = Converter.decimalToBinary(dec);
         String oct = Converter.decimalToOctal(dec);
@@ -237,7 +242,7 @@ public class Homescreen extends AppCompatActivity {
         textViewHex.setText(hex);
     }
 
-    private void doBin(String bin){
+    private void doBin(String bin) {
         String dec = Converter.toDecimal(bin, 2);
         String hex = Converter.decimalToHexadecimal(dec);
         String oct = Converter.decimalToOctal(dec);

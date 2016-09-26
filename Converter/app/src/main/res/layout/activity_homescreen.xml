@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Homescreen">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/activity_margin"
-        android:layout_below="@+id/toolbar_layout">
+        android:layout_below="@+id/toolbar_layout"
+        android:padding="@dimen/activity_margin">
+
         <LinearLayout
             android:id="@+id/layout_base"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <Button
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_dec"
-                    android:id="@+id/button_dec"
-                    android:layout_weight="1" />
 
                 <Button
+                    android:id="@+id/button_dec"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_bin"
+                    android:layout_weight="1"
+                    android:text="@string/btn_dec" />
+
+                <Button
                     android:id="@+id/button_bin"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:alpha="0.5"
-                    />
+                    android:text="@string/btn_bin" />
             </LinearLayout>
 
             <LinearLayout
@@ -47,23 +49,22 @@
                 android:orientation="horizontal">
 
                 <Button
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_oct"
-                    android:layout_weight="1"
                     android:id="@+id/button_oct"
-                    android:alpha="0.5"
-                    />
-                <Button
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_hex"
                     android:layout_weight="1"
-                    android:id="@+id/button_hex"
                     android:alpha="0.5"
-                    />
+                    android:text="@string/btn_oct" />
+
+                <Button
+                    android:id="@+id/button_hex"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="0.5"
+                    android:text="@string/btn_hex" />
             </LinearLayout>
         </LinearLayout>
 
@@ -71,131 +72,174 @@
             android:id="@+id/layout_dummy2"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:orientation="horizontal"
-            android:layout_below="@id/layout_base">
-        </LinearLayout>
+            android:layout_below="@id/layout_base"
+            android:orientation="horizontal"></LinearLayout>
 
         <EditText
+            android:id="@+id/editText_convert"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/editText_convert"
             android:layout_below="@+id/layout_dummy2"
             android:layout_centerHorizontal="true"
             android:hint="@string/text_to_convert"
-            android:inputType="number"
-            />
-
-        <LinearLayout
-            android:id="@+id/layout_dummy3"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal"
-            android:layout_below="@id/editText_convert">
-        </LinearLayout>
+            android:inputType="number" />
 
         <Button
+            android:id="@+id/button_convert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/editText_convert"
             android:text="@string/button_convert"
-            android:textSize="25sp"
-            android:id="@+id/button_convert"
             android:textAllCaps="false"
-            android:layout_below="@id/layout_dummy3"
-
-            />
+            android:textSize="25sp" />
 
         <LinearLayout
             android:id="@+id/layout_buttons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/button_convert"
-            android:orientation="vertical"
-            >
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
 
-            <TextView
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/dec"
-                android:id="@+id/textView_dec_title"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                />
+                android:layout_marginBottom="4dp"
+                android:layout_weight="3"
+                app:cardCornerRadius="@dimen/cardview_corner">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/cardview_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView_dec_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="@string/dec"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/textView_dec"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:clickable="false"
+                        android:gravity="center_vertical"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="1234"
-                android:id="@+id/textView_dec"
-                android:clickable="false"
-                android:layout_weight="2"
-                android:gravity="center_vertical"
-                />
+                android:layout_marginBottom="4dp"
+                android:layout_weight="3"
+                app:cardCornerRadius="@dimen/cardview_corner">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/cardview_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView_bin_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/binary"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/textView_bin"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/binary"
-                android:id="@+id/textView_bin_title"
-                android:layout_weight="1"
-                />
+                android:layout_marginBottom="4dp"
+                android:layout_weight="3"
+                app:cardCornerRadius="@dimen/cardview_corner">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/cardview_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView_oct_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/oct"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/textView_oct"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
-                android:id="@+id/textView_bin"
-                android:gravity="center_vertical"
-                android:layout_weight="2"
-                />
+                android:layout_marginBottom="4dp"
+                android:layout_weight="3"
+                app:cardCornerRadius="@dimen/cardview_corner">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/oct"
-                android:id="@+id/textView_oct_title"
-                android:gravity="center_vertical"
-                android:layout_weight="1"
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/cardview_padding"
+                    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
-                android:id="@+id/textView_oct"
-                android:gravity="center_vertical"
-                android:layout_weight="2"
-                />
+                    <TextView
+                        android:id="@+id/textView_hex_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/hex"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/hex"
-                android:id="@+id/textView_hex_title"
-                android:gravity="center_vertical"
-                android:layout_weight="1"
-                />
+                    <TextView
+                        android:id="@+id/textView_hex"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
-                android:id="@+id/textView_hex"
-                android:gravity="center_vertical"
-                android:layout_weight="2"
-                />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>
